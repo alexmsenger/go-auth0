@@ -33,6 +33,8 @@ type NetworkACLRule struct {
 	NotMatch *NetworkACLRuleMatch `json:"not_match,omitempty"`
 	// The scope of the Network ACL Rule
 	Scope *string `json:"scope,omitempty"`
+	// Whether the rule matches all requests
+	MatchAll *bool `json:"match_all,omitempty"`
 }
 
 // NetworkACLRuleAction : Network ACL Rule Action.
@@ -55,6 +57,8 @@ type NetworkACLRuleMatch struct {
 	AnonymousProxy *bool `json:"anonymous_proxy,omitempty"`
 	// ASNs
 	Asns []int `json:"asns,omitempty"`
+	// Auth0 Managed curated blocklist categories
+	Auth0Managed *[]string `json:"auth0_managed,omitempty"`
 	// Geo Country Codes
 	GeoCountryCodes *[]string `json:"geo_country_codes,omitempty"`
 	// Geo Subdivision Codes
@@ -75,6 +79,20 @@ type NetworkACLRuleMatch struct {
 	ConnectingIPv4Cidrs *[]string `json:"connecting_ipv4_cidrs,omitempty"`
 	// Connecting IPv6 CIDRs
 	ConnectingIPv6Cidrs *[]string `json:"connecting_ipv6_cidrs,omitempty"`
+	// HTTP Message Signature
+	HTTPMessageSignature *NetworkACLHTTPMessageSignature `json:"http_message_signature,omitempty"`
+}
+
+// NetworkACLHTTPMessageSignature : the http_message_signature signal of a Network ACL Rule Match.
+type NetworkACLHTTPMessageSignature struct {
+	// The keys whose signatures satisfy the rule.
+	Keys []*NetworkACLHTTPMessageSignatureKey `json:"keys,omitempty"`
+}
+
+// NetworkACLHTTPMessageSignatureKey : a reference to a Network ACL key by id.
+type NetworkACLHTTPMessageSignatureKey struct {
+	// The id of the referenced Network ACL key.
+	ID *string `json:"id,omitempty"`
 }
 
 // MarshalJSON implements the json.Marshaler interface.

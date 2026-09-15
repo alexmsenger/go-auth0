@@ -938,6 +938,27 @@ func (a *AzureSBClientAddon) String() string {
 	return Stringify(a)
 }
 
+// GetIntegrationType returns the IntegrationType field if it's non-nil, zero value otherwise.
+func (b *B2BIntegrationConfiguration) GetIntegrationType() string {
+	if b == nil || b.IntegrationType == nil {
+		return ""
+	}
+	return *b.IntegrationType
+}
+
+// GetSSOProfiles returns the SSOProfiles field if it's non-nil, zero value otherwise.
+func (b *B2BIntegrationConfiguration) GetSSOProfiles() []string {
+	if b == nil || b.SSOProfiles == nil {
+		return nil
+	}
+	return *b.SSOProfiles
+}
+
+// String returns a string representation of B2BIntegrationConfiguration.
+func (b *B2BIntegrationConfiguration) String() string {
+	return Stringify(b)
+}
+
 // GetMode returns the Mode field if it's non-nil, zero value otherwise.
 func (b *BackChannelLogoutInitiators) GetMode() string {
 	if b == nil || b.Mode == nil {
@@ -1761,6 +1782,14 @@ func (c *Client) GetAsyncApprovalNotificationChannels() []string {
 	return *c.AsyncApprovalNotificationChannels
 }
 
+// GetB2BIntegrationConfiguration returns the B2BIntegrationConfiguration field.
+func (c *Client) GetB2BIntegrationConfiguration() *B2BIntegrationConfiguration {
+	if c == nil {
+		return nil
+	}
+	return c.B2BIntegrationConfiguration
+}
+
 // GetCallbacks returns the Callbacks field if it's non-nil, zero value otherwise.
 func (c *Client) GetCallbacks() []string {
 	if c == nil || c.Callbacks == nil {
@@ -1935,6 +1964,14 @@ func (c *Client) GetGrantTypes() []string {
 		return nil
 	}
 	return *c.GrantTypes
+}
+
+// GetIdentityAssertionAuthorizationGrant returns the IdentityAssertionAuthorizationGrant field.
+func (c *Client) GetIdentityAssertionAuthorizationGrant() *IdentityAssertionAuthorizationGrant {
+	if c == nil {
+		return nil
+	}
+	return c.IdentityAssertionAuthorizationGrant
 }
 
 // GetInitiateLoginURI returns the InitiateLoginURI field if it's non-nil, zero value otherwise.
@@ -2175,6 +2212,14 @@ func (c *Client) GetTokenQuota() *TokenQuota {
 		return nil
 	}
 	return c.TokenQuota
+}
+
+// GetTokenVaultPrivilegedAccess returns the TokenVaultPrivilegedAccess field.
+func (c *Client) GetTokenVaultPrivilegedAccess() *ClientTokenVaultPrivilegedAccess {
+	if c == nil {
+		return nil
+	}
+	return c.TokenVaultPrivilegedAccess
 }
 
 // GetWebOrigins returns the WebOrigins field if it's non-nil, zero value otherwise.
@@ -2846,6 +2891,56 @@ func (c *ClientTokenExchange) String() string {
 	return Stringify(c)
 }
 
+// GetCredentials returns the Credentials field if it's non-nil, zero value otherwise.
+func (c *ClientTokenVaultPrivilegedAccess) GetCredentials() []Credential {
+	if c == nil || c.Credentials == nil {
+		return nil
+	}
+	return *c.Credentials
+}
+
+// GetGrants returns the Grants field if it's non-nil, zero value otherwise.
+func (c *ClientTokenVaultPrivilegedAccess) GetGrants() []ClientTokenVaultPrivilegedGrant {
+	if c == nil || c.Grants == nil {
+		return nil
+	}
+	return *c.Grants
+}
+
+// GetIPAllowlist returns the IPAllowlist field if it's non-nil, zero value otherwise.
+func (c *ClientTokenVaultPrivilegedAccess) GetIPAllowlist() []string {
+	if c == nil || c.IPAllowlist == nil {
+		return nil
+	}
+	return *c.IPAllowlist
+}
+
+// String returns a string representation of ClientTokenVaultPrivilegedAccess.
+func (c *ClientTokenVaultPrivilegedAccess) String() string {
+	return Stringify(c)
+}
+
+// GetConnection returns the Connection field if it's non-nil, zero value otherwise.
+func (c *ClientTokenVaultPrivilegedGrant) GetConnection() string {
+	if c == nil || c.Connection == nil {
+		return ""
+	}
+	return *c.Connection
+}
+
+// GetScopes returns the Scopes field if it's non-nil, zero value otherwise.
+func (c *ClientTokenVaultPrivilegedGrant) GetScopes() []string {
+	if c == nil || c.Scopes == nil {
+		return nil
+	}
+	return *c.Scopes
+}
+
+// String returns a string representation of ClientTokenVaultPrivilegedGrant.
+func (c *ClientTokenVaultPrivilegedGrant) String() string {
+	return Stringify(c)
+}
+
 // String returns a string representation of CloudBeesClientAddon.
 func (c *CloudBeesClientAddon) String() string {
 	return Stringify(c)
@@ -2883,6 +2978,22 @@ func (c *Connection) GetConnectedAccounts() *ConnectedAccounts {
 		return nil
 	}
 	return c.ConnectedAccounts
+}
+
+// GetCrossAppAccessRequestingApp returns the CrossAppAccessRequestingApp field.
+func (c *Connection) GetCrossAppAccessRequestingApp() *CrossAppAccessRequestingApp {
+	if c == nil {
+		return nil
+	}
+	return c.CrossAppAccessRequestingApp
+}
+
+// GetCrossAppAccessResourceApp returns the CrossAppAccessResourceApp field.
+func (c *Connection) GetCrossAppAccessResourceApp() *CrossAppAccessResourceApp {
+	if c == nil {
+		return nil
+	}
+	return c.CrossAppAccessResourceApp
 }
 
 // GetDisplayName returns the DisplayName field if it's non-nil, zero value otherwise.
@@ -6617,6 +6728,14 @@ func (c *ConnectionOptionsSAML) GetDisableSignOut() bool {
 	return *c.DisableSignOut
 }
 
+// GetDiscoveryURL returns the DiscoveryURL field if it's non-nil, zero value otherwise.
+func (c *ConnectionOptionsSAML) GetDiscoveryURL() string {
+	if c == nil || c.DiscoveryURL == nil {
+		return ""
+	}
+	return *c.DiscoveryURL
+}
+
 // GetDomainAliases returns the DomainAliases field if it's non-nil, zero value otherwise.
 func (c *ConnectionOptionsSAML) GetDomainAliases() []string {
 	if c == nil || c.DomainAliases == nil {
@@ -6719,6 +6838,14 @@ func (c *ConnectionOptionsSAML) GetNonPersistentAttrs() []string {
 		return nil
 	}
 	return *c.NonPersistentAttrs
+}
+
+// GetOIDCMetadata returns the OIDCMetadata map if it's non-nil, an empty map otherwise.
+func (c *ConnectionOptionsSAML) GetOIDCMetadata() map[string]interface{} {
+	if c == nil || c.OIDCMetadata == nil {
+		return map[string]interface{}{}
+	}
+	return c.OIDCMetadata
 }
 
 // GetProtocolBinding returns the ProtocolBinding field if it's non-nil, zero value otherwise.
@@ -7435,6 +7562,32 @@ func (c *Credential) GetUpdatedAt() time.Time {
 
 // String returns a string representation of Credential.
 func (c *Credential) String() string {
+	return Stringify(c)
+}
+
+// GetActive returns the Active field if it's non-nil, zero value otherwise.
+func (c *CrossAppAccessRequestingApp) GetActive() bool {
+	if c == nil || c.Active == nil {
+		return false
+	}
+	return *c.Active
+}
+
+// String returns a string representation of CrossAppAccessRequestingApp.
+func (c *CrossAppAccessRequestingApp) String() string {
+	return Stringify(c)
+}
+
+// GetStatus returns the Status field if it's non-nil, zero value otherwise.
+func (c *CrossAppAccessResourceApp) GetStatus() string {
+	if c == nil || c.Status == nil {
+		return ""
+	}
+	return *c.Status
+}
+
+// String returns a string representation of CrossAppAccessResourceApp.
+func (c *CrossAppAccessResourceApp) String() string {
 	return Stringify(c)
 }
 
@@ -9210,6 +9363,19 @@ func (h *HookList) String() string {
 	return Stringify(h)
 }
 
+// GetActive returns the Active field if it's non-nil, zero value otherwise.
+func (i *IdentityAssertionAuthorizationGrant) GetActive() bool {
+	if i == nil || i.Active == nil {
+		return false
+	}
+	return *i.Active
+}
+
+// String returns a string representation of IdentityAssertionAuthorizationGrant.
+func (i *IdentityAssertionAuthorizationGrant) String() string {
+	return Stringify(i)
+}
+
 // GetClientID returns the ClientID field if it's non-nil, zero value otherwise.
 func (j *Job) GetClientID() string {
 	if j == nil || j.ClientID == nil {
@@ -10336,6 +10502,14 @@ func (m *MyOrganizationConfiguration) GetInvitationLandingClientID() string {
 	return *m.InvitationLandingClientID
 }
 
+// GetThirdPartyClientAccess returns the ThirdPartyClientAccess field.
+func (m *MyOrganizationConfiguration) GetThirdPartyClientAccess() *MyOrganizationThirdPartyClientAccess {
+	if m == nil {
+		return nil
+	}
+	return m.ThirdPartyClientAccess
+}
+
 // GetUserAttributeProfileID returns the UserAttributeProfileID field if it's non-nil, zero value otherwise.
 func (m *MyOrganizationConfiguration) GetUserAttributeProfileID() string {
 	if m == nil || m.UserAttributeProfileID == nil {
@@ -10346,6 +10520,27 @@ func (m *MyOrganizationConfiguration) GetUserAttributeProfileID() string {
 
 // String returns a string representation of MyOrganizationConfiguration.
 func (m *MyOrganizationConfiguration) String() string {
+	return Stringify(m)
+}
+
+// GetAllowedValues returns the AllowedValues field if it's non-nil, zero value otherwise.
+func (m *MyOrganizationThirdPartyClientAccess) GetAllowedValues() []string {
+	if m == nil || m.AllowedValues == nil {
+		return nil
+	}
+	return *m.AllowedValues
+}
+
+// GetDefaultValue returns the DefaultValue field if it's non-nil, zero value otherwise.
+func (m *MyOrganizationThirdPartyClientAccess) GetDefaultValue() string {
+	if m == nil || m.DefaultValue == nil {
+		return ""
+	}
+	return *m.DefaultValue
+}
+
+// String returns a string representation of MyOrganizationThirdPartyClientAccess.
+func (m *MyOrganizationThirdPartyClientAccess) String() string {
 	return Stringify(m)
 }
 
@@ -10410,6 +10605,24 @@ func (n *NetworkACL) String() string {
 	return Stringify(n)
 }
 
+// String returns a string representation of NetworkACLHTTPMessageSignature.
+func (n *NetworkACLHTTPMessageSignature) String() string {
+	return Stringify(n)
+}
+
+// GetID returns the ID field if it's non-nil, zero value otherwise.
+func (n *NetworkACLHTTPMessageSignatureKey) GetID() string {
+	if n == nil || n.ID == nil {
+		return ""
+	}
+	return *n.ID
+}
+
+// String returns a string representation of NetworkACLHTTPMessageSignatureKey.
+func (n *NetworkACLHTTPMessageSignatureKey) String() string {
+	return Stringify(n)
+}
+
 // GetAction returns the Action field.
 func (n *NetworkACLRule) GetAction() *NetworkACLRuleAction {
 	if n == nil {
@@ -10424,6 +10637,14 @@ func (n *NetworkACLRule) GetMatch() *NetworkACLRuleMatch {
 		return nil
 	}
 	return n.Match
+}
+
+// GetMatchAll returns the MatchAll field if it's non-nil, zero value otherwise.
+func (n *NetworkACLRule) GetMatchAll() bool {
+	if n == nil || n.MatchAll == nil {
+		return false
+	}
+	return *n.MatchAll
 }
 
 // GetNotMatch returns the NotMatch field.
@@ -10500,6 +10721,14 @@ func (n *NetworkACLRuleMatch) GetAnonymousProxy() bool {
 	return *n.AnonymousProxy
 }
 
+// GetAuth0Managed returns the Auth0Managed field if it's non-nil, zero value otherwise.
+func (n *NetworkACLRuleMatch) GetAuth0Managed() []string {
+	if n == nil || n.Auth0Managed == nil {
+		return nil
+	}
+	return *n.Auth0Managed
+}
+
 // GetConnectingIPv4Cidrs returns the ConnectingIPv4Cidrs field if it's non-nil, zero value otherwise.
 func (n *NetworkACLRuleMatch) GetConnectingIPv4Cidrs() []string {
 	if n == nil || n.ConnectingIPv4Cidrs == nil {
@@ -10538,6 +10767,14 @@ func (n *NetworkACLRuleMatch) GetHostnames() []string {
 		return nil
 	}
 	return *n.Hostnames
+}
+
+// GetHTTPMessageSignature returns the HTTPMessageSignature field.
+func (n *NetworkACLRuleMatch) GetHTTPMessageSignature() *NetworkACLHTTPMessageSignature {
+	if n == nil {
+		return nil
+	}
+	return n.HTTPMessageSignature
 }
 
 // GetIPv4Cidrs returns the IPv4Cidrs field if it's non-nil, zero value otherwise.
@@ -10685,6 +10922,14 @@ func (o *Organization) GetID() string {
 	return *o.ID
 }
 
+// GetIsAppEntitlementActive returns the IsAppEntitlementActive field if it's non-nil, zero value otherwise.
+func (o *Organization) GetIsAppEntitlementActive() bool {
+	if o == nil || o.IsAppEntitlementActive == nil {
+		return false
+	}
+	return *o.IsAppEntitlementActive
+}
+
 // GetMetadata returns the Metadata field if it's non-nil, zero value otherwise.
 func (o *Organization) GetMetadata() map[string]string {
 	if o == nil || o.Metadata == nil {
@@ -10699,6 +10944,14 @@ func (o *Organization) GetName() string {
 		return ""
 	}
 	return *o.Name
+}
+
+// GetThirdPartyClientAccess returns the ThirdPartyClientAccess field if it's non-nil, zero value otherwise.
+func (o *Organization) GetThirdPartyClientAccess() string {
+	if o == nil || o.ThirdPartyClientAccess == nil {
+		return ""
+	}
+	return *o.ThirdPartyClientAccess
 }
 
 // GetTokenQuota returns the TokenQuota field.
@@ -12240,6 +12493,22 @@ func (r *Role) GetName() string {
 		return ""
 	}
 	return *r.Name
+}
+
+// GetOwnerID returns the OwnerID field if it's non-nil, zero value otherwise.
+func (r *Role) GetOwnerID() string {
+	if r == nil || r.OwnerID == nil {
+		return ""
+	}
+	return *r.OwnerID
+}
+
+// GetType returns the Type field if it's non-nil, zero value otherwise.
+func (r *Role) GetType() string {
+	if r == nil || r.Type == nil {
+		return ""
+	}
+	return *r.Type
 }
 
 // String returns a string representation of Role.

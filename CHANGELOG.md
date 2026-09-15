@@ -1,5 +1,43 @@
 # Change Log
 
+## [v1.49.0](https://github.com/auth0/go-auth0/tree/v1.49.0) (2026-09-09)
+[Full Changelog](https://github.com/auth0/go-auth0/compare/v1.48.0...v1.49.0)
+
+**Added**
+- feat: add `B2BIntegrationConfiguration` support to `Client`, letting a client be configured as a B2B Integration (Enterprise Connect) client with `IntegrationType` and `SSOProfiles` fields [\#863](https://github.com/auth0/go-auth0/pull/863) ([bkiran6398](https://github.com/bkiran6398))
+- feat: add `HTTPMessageSignature` signal support to `NetworkACLRuleMatch`, backed by `NetworkACLHTTPMessageSignature` and `NetworkACLHTTPMessageSignatureKey` types (Early Access) [\#857](https://github.com/auth0/go-auth0/pull/857) ([bkiran6398](https://github.com/bkiran6398))
+- feat: add `MatchAll` field (`*bool`) to `NetworkACLRule`, enabling rules that match all requests without signal-based criteria [\#862](https://github.com/auth0/go-auth0/pull/862) ([KartikJha](https://github.com/KartikJha))
+- feat: add `PromptConfirmation` prompt type and `ScreenConfirmation` screen name constants for the Universal Login `confirmation` prompt/screen [\#859](https://github.com/auth0/go-auth0/pull/859) ([duedares-rvj](https://github.com/duedares-rvj))
+
+## [v1.48.0](https://github.com/auth0/go-auth0/tree/v1.48.0) (2026-08-26)
+[Full Changelog](https://github.com/auth0/go-auth0/compare/v1.47.0...v1.48.0)
+
+**Added**
+- feat: add `ThirdPartyClientAccess` support to `MyOrganizationConfiguration` on `Client`, controlling whether third-party clients can access organizations created for the client through the My Organization API (Early Access). Note that `AllowedValues` is required whenever `ThirdPartyClientAccess` is set [\#854](https://github.com/auth0/go-auth0/pull/854) ([KartikJha](https://github.com/KartikJha))
+
+## [v1.47.0](https://github.com/auth0/go-auth0/tree/v1.47.0) (2026-08-13)
+[Full Changelog](https://github.com/auth0/go-auth0/compare/v1.46.0...v1.47.0)
+
+**Added**
+- feat: add Organization-to-Application Entitlement support (EA only) with `IsAppEntitlementActive`/`Client` on `Organization` [\#848](https://github.com/auth0/go-auth0/pull/848) ([KartikJha](https://github.com/KartikJha))
+- feat: add support for managing organization-level roles with `Type` and `OwnerID` fields on `Role` [\#847](https://github.com/auth0/go-auth0/pull/847) ([duedares-rvj](https://github.com/duedares-rvj))
+- feat: add `TokenVaultPrivilegedAccess` support to `Client`, letting a client be configured as a Token Vault privileged worker with credentials, an IP allowlist, and per-connection scope grants (Early Access). Note that `Credentials`, `IPAllowlist`, and `Grants` are all required whenever the object is written [\#840](https://github.com/auth0/go-auth0/pull/840) ([KartikJha](https://github.com/KartikJha))
+
+## [v1.46.0](https://github.com/auth0/go-auth0/tree/v1.46.0) (2026-07-31)
+[Full Changelog](https://github.com/auth0/go-auth0/compare/v1.45.0...v1.46.0)
+
+**Added**
+- feat: add Cross-App Access resource application support with `CrossAppAccessResourceApp` on `Connection`, `IdentityAssertionAuthorizationGrant` on `Client`, and `DiscoveryURL`/`OIDCMetadata` on `ConnectionOptionsSAML` [\#839](https://github.com/auth0/go-auth0/pull/839) ([bkiran6398](https://github.com/bkiran6398))
+- feat: add Cross-App Access requesting application support with `CrossAppAccessRequestingApp` on `Connection` [\#824](https://github.com/auth0/go-auth0/pull/824) ([KartikJha](https://github.com/KartikJha))
+- feat: add `Auth0Managed` curated blocklist support to `NetworkACLRuleMatch` [\#830](https://github.com/auth0/go-auth0/pull/830) ([KartikJha](https://github.com/KartikJha))
+
+## [v1.45.0](https://github.com/auth0/go-auth0/tree/v1.45.0) (2026-07-16)
+[Full Changelog](https://github.com/auth0/go-auth0/compare/v1.44.0...v1.45.0)
+
+**Added**
+- feat: add third_party_client_access field in organization [\#818](https://github.com/auth0/go-auth0/pull/818) ([bkiran6398](https://github.com/bkiran6398))
+- feat: added support for identifiers in branding_theme, country_codes in tenant structs [\#811](https://github.com/auth0/go-auth0/pull/811) ([KartikJha](https://github.com/KartikJha))
+
 ## [v1.44.0](https://github.com/auth0/go-auth0/tree/v1.44.0) (2026-06-30)
 [Full Changelog](https://github.com/auth0/go-auth0/compare/v1.43.0...v1.44.0)
 

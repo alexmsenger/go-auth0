@@ -1189,6 +1189,34 @@ func TestAzureSBClientAddon_String(t *testing.T) {
 	}
 }
 
+func TestB2BIntegrationConfiguration_GetIntegrationType(tt *testing.T) {
+	var zeroValue string
+	b := &B2BIntegrationConfiguration{IntegrationType: &zeroValue}
+	b.GetIntegrationType()
+	b = &B2BIntegrationConfiguration{}
+	b.GetIntegrationType()
+	b = nil
+	b.GetIntegrationType()
+}
+
+func TestB2BIntegrationConfiguration_GetSSOProfiles(tt *testing.T) {
+	var zeroValue []string
+	b := &B2BIntegrationConfiguration{SSOProfiles: &zeroValue}
+	b.GetSSOProfiles()
+	b = &B2BIntegrationConfiguration{}
+	b.GetSSOProfiles()
+	b = nil
+	b.GetSSOProfiles()
+}
+
+func TestB2BIntegrationConfiguration_String(t *testing.T) {
+	var rawJSON json.RawMessage
+	v := &B2BIntegrationConfiguration{}
+	if err := json.Unmarshal([]byte(v.String()), &rawJSON); err != nil {
+		t.Errorf("failed to produce a valid json")
+	}
+}
+
 func TestBackChannelLogoutInitiators_GetMode(tt *testing.T) {
 	var zeroValue string
 	b := &BackChannelLogoutInitiators{Mode: &zeroValue}
@@ -2243,6 +2271,13 @@ func TestClient_GetAsyncApprovalNotificationChannels(tt *testing.T) {
 	c.GetAsyncApprovalNotificationChannels()
 }
 
+func TestClient_GetB2BIntegrationConfiguration(tt *testing.T) {
+	c := &Client{}
+	c.GetB2BIntegrationConfiguration()
+	c = nil
+	c.GetB2BIntegrationConfiguration()
+}
+
 func TestClient_GetCallbacks(tt *testing.T) {
 	var zeroValue []string
 	c := &Client{Callbacks: &zeroValue}
@@ -2449,6 +2484,13 @@ func TestClient_GetGrantTypes(tt *testing.T) {
 	c.GetGrantTypes()
 	c = nil
 	c.GetGrantTypes()
+}
+
+func TestClient_GetIdentityAssertionAuthorizationGrant(tt *testing.T) {
+	c := &Client{}
+	c.GetIdentityAssertionAuthorizationGrant()
+	c = nil
+	c.GetIdentityAssertionAuthorizationGrant()
 }
 
 func TestClient_GetInitiateLoginURI(tt *testing.T) {
@@ -2716,6 +2758,13 @@ func TestClient_GetTokenQuota(tt *testing.T) {
 	c.GetTokenQuota()
 	c = nil
 	c.GetTokenQuota()
+}
+
+func TestClient_GetTokenVaultPrivilegedAccess(tt *testing.T) {
+	c := &Client{}
+	c.GetTokenVaultPrivilegedAccess()
+	c = nil
+	c.GetTokenVaultPrivilegedAccess()
 }
 
 func TestClient_GetWebOrigins(tt *testing.T) {
@@ -3473,6 +3522,72 @@ func TestClientTokenExchange_String(t *testing.T) {
 	}
 }
 
+func TestClientTokenVaultPrivilegedAccess_GetCredentials(tt *testing.T) {
+	var zeroValue []Credential
+	c := &ClientTokenVaultPrivilegedAccess{Credentials: &zeroValue}
+	c.GetCredentials()
+	c = &ClientTokenVaultPrivilegedAccess{}
+	c.GetCredentials()
+	c = nil
+	c.GetCredentials()
+}
+
+func TestClientTokenVaultPrivilegedAccess_GetGrants(tt *testing.T) {
+	var zeroValue []ClientTokenVaultPrivilegedGrant
+	c := &ClientTokenVaultPrivilegedAccess{Grants: &zeroValue}
+	c.GetGrants()
+	c = &ClientTokenVaultPrivilegedAccess{}
+	c.GetGrants()
+	c = nil
+	c.GetGrants()
+}
+
+func TestClientTokenVaultPrivilegedAccess_GetIPAllowlist(tt *testing.T) {
+	var zeroValue []string
+	c := &ClientTokenVaultPrivilegedAccess{IPAllowlist: &zeroValue}
+	c.GetIPAllowlist()
+	c = &ClientTokenVaultPrivilegedAccess{}
+	c.GetIPAllowlist()
+	c = nil
+	c.GetIPAllowlist()
+}
+
+func TestClientTokenVaultPrivilegedAccess_String(t *testing.T) {
+	var rawJSON json.RawMessage
+	v := &ClientTokenVaultPrivilegedAccess{}
+	if err := json.Unmarshal([]byte(v.String()), &rawJSON); err != nil {
+		t.Errorf("failed to produce a valid json")
+	}
+}
+
+func TestClientTokenVaultPrivilegedGrant_GetConnection(tt *testing.T) {
+	var zeroValue string
+	c := &ClientTokenVaultPrivilegedGrant{Connection: &zeroValue}
+	c.GetConnection()
+	c = &ClientTokenVaultPrivilegedGrant{}
+	c.GetConnection()
+	c = nil
+	c.GetConnection()
+}
+
+func TestClientTokenVaultPrivilegedGrant_GetScopes(tt *testing.T) {
+	var zeroValue []string
+	c := &ClientTokenVaultPrivilegedGrant{Scopes: &zeroValue}
+	c.GetScopes()
+	c = &ClientTokenVaultPrivilegedGrant{}
+	c.GetScopes()
+	c = nil
+	c.GetScopes()
+}
+
+func TestClientTokenVaultPrivilegedGrant_String(t *testing.T) {
+	var rawJSON json.RawMessage
+	v := &ClientTokenVaultPrivilegedGrant{}
+	if err := json.Unmarshal([]byte(v.String()), &rawJSON); err != nil {
+		t.Errorf("failed to produce a valid json")
+	}
+}
+
 func TestCloudBeesClientAddon_String(t *testing.T) {
 	var rawJSON json.RawMessage
 	v := &CloudBeesClientAddon{}
@@ -3519,6 +3634,20 @@ func TestConnection_GetConnectedAccounts(tt *testing.T) {
 	c.GetConnectedAccounts()
 	c = nil
 	c.GetConnectedAccounts()
+}
+
+func TestConnection_GetCrossAppAccessRequestingApp(tt *testing.T) {
+	c := &Connection{}
+	c.GetCrossAppAccessRequestingApp()
+	c = nil
+	c.GetCrossAppAccessRequestingApp()
+}
+
+func TestConnection_GetCrossAppAccessResourceApp(tt *testing.T) {
+	c := &Connection{}
+	c.GetCrossAppAccessResourceApp()
+	c = nil
+	c.GetCrossAppAccessResourceApp()
 }
 
 func TestConnection_GetDisplayName(tt *testing.T) {
@@ -8171,6 +8300,16 @@ func TestConnectionOptionsSAML_GetDisableSignOut(tt *testing.T) {
 	c.GetDisableSignOut()
 }
 
+func TestConnectionOptionsSAML_GetDiscoveryURL(tt *testing.T) {
+	var zeroValue string
+	c := &ConnectionOptionsSAML{DiscoveryURL: &zeroValue}
+	c.GetDiscoveryURL()
+	c = &ConnectionOptionsSAML{}
+	c.GetDiscoveryURL()
+	c = nil
+	c.GetDiscoveryURL()
+}
+
 func TestConnectionOptionsSAML_GetDomainAliases(tt *testing.T) {
 	var zeroValue []string
 	c := &ConnectionOptionsSAML{DomainAliases: &zeroValue}
@@ -8296,6 +8435,16 @@ func TestConnectionOptionsSAML_GetNonPersistentAttrs(tt *testing.T) {
 	c.GetNonPersistentAttrs()
 	c = nil
 	c.GetNonPersistentAttrs()
+}
+
+func TestConnectionOptionsSAML_GetOIDCMetadata(tt *testing.T) {
+	zeroValue := map[string]interface{}{}
+	c := &ConnectionOptionsSAML{OIDCMetadata: zeroValue}
+	c.GetOIDCMetadata()
+	c = &ConnectionOptionsSAML{}
+	c.GetOIDCMetadata()
+	c = nil
+	c.GetOIDCMetadata()
 }
 
 func TestConnectionOptionsSAML_GetProtocolBinding(tt *testing.T) {
@@ -9187,6 +9336,42 @@ func TestCredential_GetUpdatedAt(tt *testing.T) {
 func TestCredential_String(t *testing.T) {
 	var rawJSON json.RawMessage
 	v := &Credential{}
+	if err := json.Unmarshal([]byte(v.String()), &rawJSON); err != nil {
+		t.Errorf("failed to produce a valid json")
+	}
+}
+
+func TestCrossAppAccessRequestingApp_GetActive(tt *testing.T) {
+	var zeroValue bool
+	c := &CrossAppAccessRequestingApp{Active: &zeroValue}
+	c.GetActive()
+	c = &CrossAppAccessRequestingApp{}
+	c.GetActive()
+	c = nil
+	c.GetActive()
+}
+
+func TestCrossAppAccessRequestingApp_String(t *testing.T) {
+	var rawJSON json.RawMessage
+	v := &CrossAppAccessRequestingApp{}
+	if err := json.Unmarshal([]byte(v.String()), &rawJSON); err != nil {
+		t.Errorf("failed to produce a valid json")
+	}
+}
+
+func TestCrossAppAccessResourceApp_GetStatus(tt *testing.T) {
+	var zeroValue string
+	c := &CrossAppAccessResourceApp{Status: &zeroValue}
+	c.GetStatus()
+	c = &CrossAppAccessResourceApp{}
+	c.GetStatus()
+	c = nil
+	c.GetStatus()
+}
+
+func TestCrossAppAccessResourceApp_String(t *testing.T) {
+	var rawJSON json.RawMessage
+	v := &CrossAppAccessResourceApp{}
 	if err := json.Unmarshal([]byte(v.String()), &rawJSON); err != nil {
 		t.Errorf("failed to produce a valid json")
 	}
@@ -11479,6 +11664,24 @@ func TestHookList_String(t *testing.T) {
 	}
 }
 
+func TestIdentityAssertionAuthorizationGrant_GetActive(tt *testing.T) {
+	var zeroValue bool
+	i := &IdentityAssertionAuthorizationGrant{Active: &zeroValue}
+	i.GetActive()
+	i = &IdentityAssertionAuthorizationGrant{}
+	i.GetActive()
+	i = nil
+	i.GetActive()
+}
+
+func TestIdentityAssertionAuthorizationGrant_String(t *testing.T) {
+	var rawJSON json.RawMessage
+	v := &IdentityAssertionAuthorizationGrant{}
+	if err := json.Unmarshal([]byte(v.String()), &rawJSON); err != nil {
+		t.Errorf("failed to produce a valid json")
+	}
+}
+
 func TestJob_GetClientID(tt *testing.T) {
 	var zeroValue string
 	j := &Job{ClientID: &zeroValue}
@@ -12930,6 +13133,13 @@ func TestMyOrganizationConfiguration_GetInvitationLandingClientID(tt *testing.T)
 	m.GetInvitationLandingClientID()
 }
 
+func TestMyOrganizationConfiguration_GetThirdPartyClientAccess(tt *testing.T) {
+	m := &MyOrganizationConfiguration{}
+	m.GetThirdPartyClientAccess()
+	m = nil
+	m.GetThirdPartyClientAccess()
+}
+
 func TestMyOrganizationConfiguration_GetUserAttributeProfileID(tt *testing.T) {
 	var zeroValue string
 	m := &MyOrganizationConfiguration{UserAttributeProfileID: &zeroValue}
@@ -12943,6 +13153,34 @@ func TestMyOrganizationConfiguration_GetUserAttributeProfileID(tt *testing.T) {
 func TestMyOrganizationConfiguration_String(t *testing.T) {
 	var rawJSON json.RawMessage
 	v := &MyOrganizationConfiguration{}
+	if err := json.Unmarshal([]byte(v.String()), &rawJSON); err != nil {
+		t.Errorf("failed to produce a valid json")
+	}
+}
+
+func TestMyOrganizationThirdPartyClientAccess_GetAllowedValues(tt *testing.T) {
+	var zeroValue []string
+	m := &MyOrganizationThirdPartyClientAccess{AllowedValues: &zeroValue}
+	m.GetAllowedValues()
+	m = &MyOrganizationThirdPartyClientAccess{}
+	m.GetAllowedValues()
+	m = nil
+	m.GetAllowedValues()
+}
+
+func TestMyOrganizationThirdPartyClientAccess_GetDefaultValue(tt *testing.T) {
+	var zeroValue string
+	m := &MyOrganizationThirdPartyClientAccess{DefaultValue: &zeroValue}
+	m.GetDefaultValue()
+	m = &MyOrganizationThirdPartyClientAccess{}
+	m.GetDefaultValue()
+	m = nil
+	m.GetDefaultValue()
+}
+
+func TestMyOrganizationThirdPartyClientAccess_String(t *testing.T) {
+	var rawJSON json.RawMessage
+	v := &MyOrganizationThirdPartyClientAccess{}
 	if err := json.Unmarshal([]byte(v.String()), &rawJSON); err != nil {
 		t.Errorf("failed to produce a valid json")
 	}
@@ -13023,6 +13261,32 @@ func TestNetworkACL_String(t *testing.T) {
 	}
 }
 
+func TestNetworkACLHTTPMessageSignature_String(t *testing.T) {
+	var rawJSON json.RawMessage
+	v := &NetworkACLHTTPMessageSignature{}
+	if err := json.Unmarshal([]byte(v.String()), &rawJSON); err != nil {
+		t.Errorf("failed to produce a valid json")
+	}
+}
+
+func TestNetworkACLHTTPMessageSignatureKey_GetID(tt *testing.T) {
+	var zeroValue string
+	n := &NetworkACLHTTPMessageSignatureKey{ID: &zeroValue}
+	n.GetID()
+	n = &NetworkACLHTTPMessageSignatureKey{}
+	n.GetID()
+	n = nil
+	n.GetID()
+}
+
+func TestNetworkACLHTTPMessageSignatureKey_String(t *testing.T) {
+	var rawJSON json.RawMessage
+	v := &NetworkACLHTTPMessageSignatureKey{}
+	if err := json.Unmarshal([]byte(v.String()), &rawJSON); err != nil {
+		t.Errorf("failed to produce a valid json")
+	}
+}
+
 func TestNetworkACLRule_GetAction(tt *testing.T) {
 	n := &NetworkACLRule{}
 	n.GetAction()
@@ -13035,6 +13299,16 @@ func TestNetworkACLRule_GetMatch(tt *testing.T) {
 	n.GetMatch()
 	n = nil
 	n.GetMatch()
+}
+
+func TestNetworkACLRule_GetMatchAll(tt *testing.T) {
+	var zeroValue bool
+	n := &NetworkACLRule{MatchAll: &zeroValue}
+	n.GetMatchAll()
+	n = &NetworkACLRule{}
+	n.GetMatchAll()
+	n = nil
+	n.GetMatchAll()
 }
 
 func TestNetworkACLRule_GetNotMatch(tt *testing.T) {
@@ -13130,6 +13404,16 @@ func TestNetworkACLRuleMatch_GetAnonymousProxy(tt *testing.T) {
 	n.GetAnonymousProxy()
 }
 
+func TestNetworkACLRuleMatch_GetAuth0Managed(tt *testing.T) {
+	var zeroValue []string
+	n := &NetworkACLRuleMatch{Auth0Managed: &zeroValue}
+	n.GetAuth0Managed()
+	n = &NetworkACLRuleMatch{}
+	n.GetAuth0Managed()
+	n = nil
+	n.GetAuth0Managed()
+}
+
 func TestNetworkACLRuleMatch_GetConnectingIPv4Cidrs(tt *testing.T) {
 	var zeroValue []string
 	n := &NetworkACLRuleMatch{ConnectingIPv4Cidrs: &zeroValue}
@@ -13178,6 +13462,13 @@ func TestNetworkACLRuleMatch_GetHostnames(tt *testing.T) {
 	n.GetHostnames()
 	n = nil
 	n.GetHostnames()
+}
+
+func TestNetworkACLRuleMatch_GetHTTPMessageSignature(tt *testing.T) {
+	n := &NetworkACLRuleMatch{}
+	n.GetHTTPMessageSignature()
+	n = nil
+	n.GetHTTPMessageSignature()
 }
 
 func TestNetworkACLRuleMatch_GetIPv4Cidrs(tt *testing.T) {
@@ -13361,6 +13652,16 @@ func TestOrganization_GetID(tt *testing.T) {
 	o.GetID()
 }
 
+func TestOrganization_GetIsAppEntitlementActive(tt *testing.T) {
+	var zeroValue bool
+	o := &Organization{IsAppEntitlementActive: &zeroValue}
+	o.GetIsAppEntitlementActive()
+	o = &Organization{}
+	o.GetIsAppEntitlementActive()
+	o = nil
+	o.GetIsAppEntitlementActive()
+}
+
 func TestOrganization_GetMetadata(tt *testing.T) {
 	var zeroValue map[string]string
 	o := &Organization{Metadata: &zeroValue}
@@ -13379,6 +13680,16 @@ func TestOrganization_GetName(tt *testing.T) {
 	o.GetName()
 	o = nil
 	o.GetName()
+}
+
+func TestOrganization_GetThirdPartyClientAccess(tt *testing.T) {
+	var zeroValue string
+	o := &Organization{ThirdPartyClientAccess: &zeroValue}
+	o.GetThirdPartyClientAccess()
+	o = &Organization{}
+	o.GetThirdPartyClientAccess()
+	o = nil
+	o.GetThirdPartyClientAccess()
 }
 
 func TestOrganization_GetTokenQuota(tt *testing.T) {
@@ -15345,6 +15656,26 @@ func TestRole_GetName(tt *testing.T) {
 	r.GetName()
 	r = nil
 	r.GetName()
+}
+
+func TestRole_GetOwnerID(tt *testing.T) {
+	var zeroValue string
+	r := &Role{OwnerID: &zeroValue}
+	r.GetOwnerID()
+	r = &Role{}
+	r.GetOwnerID()
+	r = nil
+	r.GetOwnerID()
+}
+
+func TestRole_GetType(tt *testing.T) {
+	var zeroValue string
+	r := &Role{Type: &zeroValue}
+	r.GetType()
+	r = &Role{}
+	r.GetType()
+	r = nil
+	r.GetType()
 }
 
 func TestRole_String(t *testing.T) {
